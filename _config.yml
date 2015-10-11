@@ -1,1 +1,7 @@
 highlighter: pygments
+source: ./
+safe: true
+lsi: false
+defaults:
+  - values:
+      layout: default

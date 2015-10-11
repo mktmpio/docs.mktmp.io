@@ -1,25 +1,28 @@
+---
+---
+
 @function theme-lightest($base) {
-  @return scale-color($base, $saturation: -40, $lightness: 80);
+  @return scale-color($base, $saturation: -40%, $lightness: 80%);
 }
 
 @function theme-lighter($base) {
-  @return scale-color($base, $saturation: -25, $lightness: 50);
+  @return scale-color($base, $saturation: -25%, $lightness: 50%);
 }
 
 @function theme-light($base) {
-  @return scale-color($base, $saturation: -15, $lightness: 25);
+  @return scale-color($base, $saturation: -15%, $lightness: 25%);
 }
 
 @function theme-dark($base) {
-  @return scale-color($base, $saturation: -15, $lightness: -25);
+  @return scale-color($base, $saturation: -15%, $lightness: -25%);
 }
 
 @function theme-darker($base) {
-  @return scale-color($base, $saturation: -25, $lightness: -50);
+  @return scale-color($base, $saturation: -25%, $lightness: -50%);
 }
 
 @function theme-darkest($base) {
-  @return scale-color($base, $saturation: -40, $lightness: -80);
+  @return scale-color($base, $saturation: -40%, $lightness: -80%);
 }
 
 @function brightness($color) {
@@ -31,8 +34,8 @@
 
 @function text-for($color) {
   @return if(brightness($color) > 50,
-      scale-color($color, $lightness: -70),
-      scale-color($color, $lightness: 90));
+      scale-color($color, $lightness: -70%),
+      scale-color($color, $lightness: 90%));
 }
 
 @mixin border-variant($parent, $color) {

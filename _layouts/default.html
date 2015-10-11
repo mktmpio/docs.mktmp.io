@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>mktmpio</title>
+    <meta name="description" content="Create a temporary database server instance to use for testing or experimentation and then delete it when you are done." />
+
+    <!-- Thanks, http://realfavicongenerator.net/ ! -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-194x194.png" sizes="194x194">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="apple-mobile-web-app-title" content="mktmpio">
+    <meta name="application-name" content="mktmpio">
+    <meta name="msapplication-TileColor" content="#318dba">
+    <!-- <meta name="msapplication-TileImage" content="/mstile-144x144.png"> -->
+    <meta name="theme-color" content="#318dba">
+
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="canonical" href="{canonicalUrl}" />
+
+    <script src="/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+  </head>
+  <body>
+
+    <script>
+      dataLayer = [
+        {dataLayer|js|s}
+      ];
+    </script>
+
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NMCF28"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NMCF28');</script>
+    <!-- End Google Tag Manager -->
+
+    <nav class="navbar navbar-dark bg-inverse" role="navigation">
+      <a class="navbar-brand media-middle mktmpio-logo" href="/">
+        <svg width="32" height="32" viewBox="0 0 100 100" version="1">
+          <filter id = "i1" width = "150%" height = "150%">
+            <feOffset result = "offOut" in = "SourceAlpha" dx = "1.5" dy = "1.7"/>
+            <feGaussianBlur result = "blurOut" in = "offOut" stdDeviation = "1"/>
+            <feBlend in = "SourceGraphic" in2 = "blurOut" mode = "normal"/>
+          </filter>
+          <path d="M10 0C5 0 0 5 0 10l0 80C0 95 5 100 10 100l80 0C95 100 100 95 100 90l0-80C100 5 95 0 90 0Z" fill="#acbfc9"/>
+          <g style="fill:none;stroke-width:7;stroke:#fff" filter="url(#i1)">
+            <g stroke-dasharray="200,5">
+              <path d="M90 20C90 25 72 28 50 28 28 28 10 25 10 20 10 15 28 8 50 8 72 8 90 15 90 20Z" stroke-dashoffset="50"/>
+              <path d="M90 20v58c0 5-18 14-40 14-22 0-40-9-40-14v-58" stroke-dashoffset="84.7"/>
+            </g>
+            <path d="m29 87c0-17 0-44 13-44 9 0 8 10 8 31 0-17 0-31 13-31 9 0 8 10 8 31" stroke-dashoffset="160"/>
+          </g>
+        </svg>
+      </a>
+      <button class="navbar-toggler hidden-sm-up pull-right" type="button" data-toggle="collapse" data-target="#primary-navbar-collapse">
+        &#9776;
+      </button>
+      <div class="collapse navbar-toggleable-xs" id="primary-navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="nav-item {@eq key=page value="/"}active{/eq}"><a class="nav-link" href="/">Home</a></li>
+          <li class="nav-item {@eq key=page value="/get-started"}active{/eq}"><a class="nav-link" href="/get-started">Get Started</a></li>
+          <li class="nav-item {@eq key=page value="/plans"}active{/eq}"><a class="nav-link" href="/plans">Plans &amp; Pricing</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://blog.mktmp.io/">Blog</a></li>
+          {#user}
+            <li class="nav-item {@eq key=page value="/my-instances"}active{/eq}"><a class="nav-link" href="/my-instances">My Instances</a></li>
+          {/user}
+        </ul>
+        <ul class="nav navbar-nav pull-right">
+          <li class="nav-item dropdown">
+            {#user}
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                {displayName}
+              </a>
+              <div class="dropdown-menu" role="menu">
+                <a class="dropdown-item {@eq key=page value="/me"}active{/eq}" href="/me" ref="nofollow">Profile</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/logout" ref="nofollow">Logout</a>
+              </div>
+            {:else}
+              <a class="nav-link" href="/auth/github" ref="nofollow">Login</a></li>
+            {/user}
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- <div class="container">
+      <div class="alert alert-warning" role="alert">
+        <strong>Preview!</strong>
+        The service works, but isn't ready for prime time yet. Please send
+        feedback to <a class="alert-link" href="mailto:mktmpio@datajin.com">mktmpio@datajin.com</a>.
+      </div>
+    </div> -->
+
+    {>"{_main}"/}
+
+    <hr />
+
+    <div class="container">
+      <footer>
+        <span class="pull-right">
+          <a href="http://blog.mktmp.io/" title="mktmpio blog"><img width="24" height="24" src="/img/glyphicons-356-bullhorn.png" /></a>
+          <a href="https://twitter.com/mktmpio" title="mktmpio on Twitter"><img width="24" height="24" src="/img/social-32-twitter.png" /></a>
+          <a href="https://github.com/mktmpio" title="mktmpio on GitHub"><img width="24" height="24" src="/img/social-22-github.png" /></a>
+          <a href="mailto:mktmpio@datajin.com" title="email mktmpio"><img width="24" height="24" src="/img/social-40-e-mail.png" /></a>
+        </span>
+        <p>
+          &copy; Datajin Technologies 2015
+          |
+          <a href="/terms-of-service">Terms of Service</a>
+          |
+          <a href="/privacy-policy">Privacy Policy</a>
+        </p>
+      </footer>
+    </div> <!-- /container -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/twbs/bootstrap/v4.0.0-alpha/dist/js/bootstrap.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

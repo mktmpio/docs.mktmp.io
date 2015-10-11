@@ -1,0 +1,228 @@
+@function theme-lightest($base) {
+  @return scale-color($base, $saturation: -40, $lightness: 80);
+}
+
+@function theme-lighter($base) {
+  @return scale-color($base, $saturation: -25, $lightness: 50);
+}
+
+@function theme-light($base) {
+  @return scale-color($base, $saturation: -15, $lightness: 25);
+}
+
+@function theme-dark($base) {
+  @return scale-color($base, $saturation: -15, $lightness: -25);
+}
+
+@function theme-darker($base) {
+  @return scale-color($base, $saturation: -25, $lightness: -50);
+}
+
+@function theme-darkest($base) {
+  @return scale-color($base, $saturation: -40, $lightness: -80);
+}
+
+@function brightness($color) {
+  @return (30 * red($color) +
+           60 * green($color) +
+           10 * blue($color)
+          ) / 255;
+}
+
+@function text-for($color) {
+  @return if(brightness($color) > 50,
+      scale-color($color, $lightness: -70),
+      scale-color($color, $lightness: 90));
+}
+
+@mixin border-variant($parent, $color) {
+  #{$parent} {
+    border-color: $color;
+  }
+}
+
+// $base: #00AAFF;
+// $base: scale-color(#444856, $lightness: 50, $saturation: 30);
+// $base: complement(#f70);
+$base: #607D8B;
+// $base: complement(#FF8900);
+// $primary: complement($base);
+// $primary: darken($base, 10);
+$primary: saturate($base, 40);
+// $secondary: #ff9800; //#ff5722; //complement($primary);
+$secondary: #ff5722;
+$accent: #4CAF50; //#8BC34A; //darken(adjust-hue($primary, -55), 10);
+$accent2: #3F51B5; //adjust-hue($primary, 55);
+
+// @include palettize(#00AAFF);
+// $primary: #0058B2;
+// $secondary: complement($primary); //#FF7700;
+// $accent: #D7FF9B;
+// $accent: #8BC34A;
+// $primary: #607D8B;
+// $primary: complement($secondary);
+// $primary: #444856;
+
+
+$navbar-border-radius: 0;
+
+$brand-primary: $primary;
+$brand-success: $accent;
+$brand-info: $accent2;
+$brand-warning: $secondary;
+$brand-danger: #e54;
+
+
+$primary-darkest: theme-darkest($primary);
+$primary-darker: theme-darker($primary);
+$primary-dark: theme-dark($primary);
+$primary-light: theme-light($primary);
+$primary-lighter: theme-lighter($primary);
+$primary-lightest: theme-lightest($primary);
+
+$secondary-darkest: theme-darkest($secondary);
+$secondary-darker: theme-darker($secondary);
+$secondary-dark: theme-dark($secondary);
+$secondary-light: theme-light($secondary);
+$secondary-lighter: theme-lighter($secondary);
+$secondary-lightest: theme-lightest($secondary);
+
+$accent-darkest: theme-darkest($accent);
+$accent-darker: theme-darker($accent);
+$accent-dark: theme-dark($accent);
+$accent-light: theme-light($accent);
+$accent-lighter: theme-lighter($accent);
+$accent-lightest: theme-lightest($accent);
+
+$accent2-darkest: theme-darkest($accent2);
+$accent2-darker: theme-darker($accent2);
+$accent2-dark: theme-dark($accent2);
+$accent2-light: theme-light($accent2);
+$accent2-lighter: theme-lighter($accent2);
+$accent2-lightest: theme-lightest($accent2);
+
+$brand-danger-darkest: theme-darkest($brand-danger);
+$brand-danger-darker: theme-darker($brand-danger);
+$brand-danger-dark: theme-dark($brand-danger);
+$brand-danger-light: theme-light($brand-danger);
+$brand-danger-lighter: theme-lighter($brand-danger);
+$brand-danger-lightest: theme-lightest($brand-danger);
+
+
+
+$state-success-bg: $accent-lightest;
+$state-info-bg: $accent2-lightest;
+$state-warning-bg: $secondary-lightest;
+$state-danger-bg: $brand-danger-lightest;
+
+$gray: desaturate($primary, 10%);
+$gray-dark: darken($gray, 30);
+$gray-light: lighten($gray, 30);
+$gray-lighter: lighten($gray, 45);
+$gray-lightest: lighten($gray, 50);
+// $gray-dark:                 scale-color($primary, $saturation: -30, $lightness: -50); //$primary-darker; //mix(#373a3c, $primary-darker);
+// $gray:                      scale-color($primary, $saturation: -30); //mix(#55595c, $primary);
+// $gray-light:                scale-color($primary, $saturation: -30, $lightness: 50); //mix(#818a91, $primary-light);
+// $gray-lighter:              scale-color($primary, $saturation: -30, $lightness: 70); //mix(#eceeef, $primary-lighter);
+// $gray-lightest:             scale-color($primary, $saturation: -30, $lightness: 90); //mix(#f7f7f9, $primary-lightest);
+
+
+// $secondary: complement($primary);
+// $secondary-dark: theme-dark($secondary);
+// $secondary-light: theme-light($secondary);
+// $accent: #FF5722;
+
+// $accent-dark: theme-dark($accent);
+// $accent-light: theme-light($accent);
+// $accent2-dark: theme-dark($accent2);
+// $accent2-light: theme-light($accent2);
+
+
+// $brand-primary:             #0275d8 !default;
+// $brand-success:             #5cb85c !default;
+// $brand-info:                #5bc0de !default;
+// $brand-warning:             #f0ad4e !default;
+// $brand-danger:              #d9534f !default;
+
+
+// $gray-dark: mix(#373a3c, $primary-dark);
+// $grey-lightest:
+
+
+
+@import "vendor/bootstrap/bootstrap";
+
+
+@mixin theme-variants($name, $color) {
+  @include bg-variant('.bg-#{$name}-darkest', theme-darkest($color));
+  @include bg-variant('.bg-#{$name}-darker', theme-darker($color));
+  @include bg-variant('.bg-#{$name}-dark', theme-dark($color));
+  @include bg-variant('.bg-#{$name}', $color);
+  @include bg-variant('.bg-#{$name}-light', theme-light($color));
+  @include bg-variant('.bg-#{$name}-lighter', theme-lighter($color));
+  @include bg-variant('.bg-#{$name}-lightest', theme-lightest($color));
+  @include border-variant('.border-#{$name}-darkest', theme-darkest($color));
+  @include border-variant('.border-#{$name}-darker', theme-darker($color));
+  @include border-variant('.border-#{$name}-dark', theme-dark($color));
+  @include border-variant('.border-#{$name}', $color);
+  @include border-variant('.border-#{$name}-light', theme-light($color));
+  @include border-variant('.border-#{$name}-lighter', theme-lighter($color));
+  @include border-variant('.border-#{$name}-lightest', theme-lightest($color));
+}
+
+@include theme-variants('primary', $primary);
+@include theme-variants('secondary', $secondary);
+@include theme-variants('accent', $accent);
+@include theme-variants('accent2', $accent2);
+// @include bg-variant('.bg-primary-dark', $primary-dark);
+// @include bg-variant('.bg-primary-light', $primary-light);
+
+// @include bg-variant('.bg-secondary-dark', $secondary-dark);
+// @include bg-variant('.bg-secondary', $secondary);
+// @include bg-variant('.bg-secondary-light', $secondary-light);
+//
+// @include bg-variant('.bg-accent-dark', $accent-dark);
+// @include bg-variant('.bg-accent', $accent);
+// @include bg-variant('.bg-accent-light', $accent-light);
+//
+// @include bg-variant('.bg-accent2-dark', $accent2-dark);
+// @include bg-variant('.bg-accent2', $accent2);
+// @include bg-variant('.bg-accent2-light', $accent2-light);
+
+
+.console {
+  background-color: #111;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
+  color: rgba(255, 255, 255, .75);
+  font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+  padding: 0.3em;
+}
+
+.jumbotron .console {
+  font-size: 26px;
+}
+
+.mktmpio-logo {
+  svg {
+    > path {
+      fill: $primary;
+    }
+    g {
+      path {
+        stroke: white; //$primary-lightest;
+      }
+    }
+  }
+}
+
+.navbar {
+  line-height: normal;
+  margin-bottom: 1rem;
+  .navbar-brand {
+    padding: 0;
+    line-height: 0.1;
+    img, svg {
+      margin-left: -5px;
+    }
+  }
+}

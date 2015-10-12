@@ -5,3 +5,9 @@ lsi: false
 defaults:
   - values:
       layout: default
+markdown: redcarpet
+exclude:
+  - README.md
+  - CNAME
+  - Gemfile
+  - Gemfile.lock

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>mktmpio</title>
+    <title>mktmpio: {{ page.title }}</title>
     <meta name="description" content="Create a temporary database server instance to use for testing or experimentation and then delete it when you are done." />
 
     <!-- Thanks, http://realfavicongenerator.net/ ! -->
@@ -26,10 +26,9 @@
     <meta name="apple-mobile-web-app-title" content="mktmpio">
     <meta name="application-name" content="mktmpio">
     <meta name="msapplication-TileColor" content="#318dba">
-    <!-- <meta name="msapplication-TileImage" content="/mstile-144x144.png"> -->
     <meta name="theme-color" content="#318dba">
 
-    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/style.css" />
     <link rel="canonical" href="{canonicalUrl}" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
@@ -85,8 +84,20 @@
           <li class="nav-item active"><a class="nav-link" href="http://docs.mktmp.io/">Docs</a></li>
           <li class="nav-item"><a class="nav-link" href="http://blog.mktmp.io/">Blog</a></li>
         </ul>
+        <br/>
       </div>
     </nav>
+
+    <div class="navbar navbar2 bg-primary-darker navbar-dark bg-inverse text-center" role="navigation">
+      <ul class="nav navbar-nav">
+        {% assign pages = site.html_pages | sort: 'title' %}
+        {% for p in pages %}
+          {% unless p.skip_nav %}
+          <li class="nav-item {% if p.url == page.url %}active{% endif %}"><a class="nav-link" href="{{ p.url }}">{{ p.title }}</a></li>
+          {% endunless %}
+        {% endfor %}
+      </ul>
+    </div>
 
     <div class="container">
       {{content}}
@@ -109,6 +120,21 @@
           |
           <a href="https://mktmp.io/privacy-policy">Privacy Policy</a>
         </p>
+
+        {% if site.footer-links.dribbble %}<a href="https://dribbble.com/{{ site.footer-links.dribbble }}"><i class="svg-icon dribbble"></i></a>{% endif %}
+        {% if site.footer-links.email %}<a href="mailto:{{ site.footer-links.email }}"><i class="svg-icon email"></i></a>{% endif %}
+        {% if site.footer-links.facebook %}<a href="https://www.facebook.com/{{ site.footer-links.facebook }}"><i class="svg-icon facebook"></i></a>{% endif %}
+        {% if site.footer-links.flickr %}<a href="https://www.flickr.com/{{ site.footer-links.flickr }}"><i class="svg-icon flickr"></i></a>{% endif %}
+        {% if site.footer-links.github %}<a href="https://github.com/{{ site.footer-links.github }}"><i class="svg-icon github"></i></a>{% endif %}
+        {% if site.footer-links.instagram %}<a href="https://instagram.com/{{ site.footer-links.instagram }}"><i class="svg-icon instagram"></i></a>{% endif %}
+        {% if site.footer-links.linkedin %}<a href="https://www.linkedin.com/in/{{ site.footer-links.linkedin }}"><i class="svg-icon linkedin"></i></a>{% endif %}
+        {% if site.footer-links.pinterest %}<a href="https://www.pinterest.com/{{ site.footer-links.pinterest }}"><i class="svg-icon pinterest"></i></a>{% endif %}
+        {% if site.footer-links.rss %}<a href="{{ site.baseurl }}/feed.xml"><i class="svg-icon rss"></i></a>{% endif %}
+        {% if site.footer-links.twitter %}<a href="https://www.twitter.com/{{ site.footer-links.twitter }}"><i class="svg-icon twitter"></i></a>{% endif %}
+        {% if site.footer-links.stackoverflow %}<a href="http://stackoverflow.com/{{ site.footer-links.stackoverflow }}"><i class="svg-icon stackoverflow"></i></a>{% endif %}
+        {% if site.footer-links.youtube %}<a href="https://youtube.com/{{ site.footer-links.youtube }}"><i class="svg-icon youtube"></i></a>{% endif %}
+        {% if site.footer-links.googleplus %}<a href="https://plus.google.com/{{ site.footer-links.googleplus }}"><i class="svg-icon googleplus"></i></a>{% endif %}
+
       </footer>
     </div> <!-- /container -->
 

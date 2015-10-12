@@ -8,8 +8,8 @@ skip_nav: true
 <ul>
 {% assign pages = site.html_pages | sort: 'title' %}
 {% for p in pages %}
-  <li><a href="{{ p.url }}">{{ p.title }}</a></li>
+  {% unless p.skip_nav %}
+    <li><a href="{{ p.url }}">{{ p.title }}</a></li>
+  {% endunless %}
 {% endfor %}
 </ul>
-
-### Temporary databases that start up faster than you read this tagline.

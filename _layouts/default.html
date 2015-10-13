@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: http://ogp.me/ns#">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>mktmpio: {{ page.title }}</title>
-    <meta name="description" content="Create a temporary database server instance to use for testing or experimentation and then delete it when you are done." />
+    <meta name="description" content="Documentation for the mktmpio service, its API, and its official clients." />
 
     <!-- Thanks, http://realfavicongenerator.net/ ! -->
     <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
@@ -28,8 +28,20 @@
     <meta name="msapplication-TileColor" content="#318dba">
     <meta name="theme-color" content="#318dba">
 
-    <link rel="stylesheet" href="{{ site.baseurl }}/style.css" />
-    <link rel="canonical" href="{canonicalUrl}" />
+    <!-- OpenGraph metadata for nicer website thumbnails -->
+    <meta property="og:title" content="{{ site.title }} - {{ page.title }}" />
+    <meta property="og:description" content"Documentation for the mktmpio service, its API, and its official clients." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ site.baseurl }}{{ page.url }}" />
+    <meta property="og:updated_time" content="{{ site.time | date_to_xmlschema }}" />
+    <meta property="og:image" content="{{ site.baseurl }}/img/mktmpio.png" />
+    <meta property="og:image:secure_url" content="https://mktmp.io/img/mktmpio.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="300" />
+    <meta property="og:image:height" content="300" />
+
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="canonical" href="{{ site.baseurl }}{{ page.url }}" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
   </head>

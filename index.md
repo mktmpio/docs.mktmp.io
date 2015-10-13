@@ -1,5 +1,5 @@
 ---
-title: Docs Home
+title: Home
 skip_nav: true
 ---
 

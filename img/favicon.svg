@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 100 100" version="1">
+  <filter id = "i1" width = "150%" height = "150%">
+    <feOffset result = "offOut" in = "SourceAlpha" dx = "1.5" dy = "1.7"/>
+    <feGaussianBlur result = "blurOut" in = "offOut" stdDeviation = "1"/>
+    <feBlend in = "SourceGraphic" in2 = "blurOut" mode = "normal"/>
+  </filter>
+  <path d="M10 0C5 0 0 5 0 10l0 80C0 95 5 100 10 100l80 0C95 100 100 95 100 90l0-80C100 5 95 0 90 0Z" fill="#318dba"/>
+  <g style="fill:none;stroke-width:7;stroke:#fff" filter="url(#i1)">
+    <g stroke-dasharray="200,5">
+      <path d="M90 20C90 25 72 28 50 28 28 28 10 25 10 20 10 15 28 8 50 8 72 8 90 15 90 20Z" stroke-dashoffset="50"/>
+      <path d="M90 20v58c0 5-18 14-40 14-22 0-40-9-40-14v-58" stroke-dashoffset="84.7"/>
+    </g>
+    <path d="m29 87c0-17 0-44 13-44 9 0 8 10 8 31 0-17 0-31 13-31 9 0 8 10 8 31" stroke-dashoffset="160"/>
+  </g>
+</svg>

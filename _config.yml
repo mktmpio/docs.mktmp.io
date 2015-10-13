@@ -1,5 +1,7 @@
 highlighter: pygments
 source: ./
+title: mktmpio Docs
+baseurl: http://docs.mktmp.io
 gems:
   - jekyll-sitemap
 lsi: false

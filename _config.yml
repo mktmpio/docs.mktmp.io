@@ -1,6 +1,7 @@
 highlighter: pygments
 source: ./
-safe: true
+gems:
+  - jekyll-sitemap
 lsi: false
 defaults:
   - values:
